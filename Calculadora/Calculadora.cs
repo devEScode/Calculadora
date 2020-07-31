@@ -1,5 +1,6 @@
 ﻿using Calculadora.Entidades;
 using System;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Calculadora
@@ -81,59 +82,59 @@ namespace Calculadora
         private void BtnMais_Click(object sender, EventArgs e)
         {
             operadorAritmetico = "+";
-            primeiroNumero = double.Parse(BoxPainel.Text);
+            primeiroNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
             BoxPainel.Clear();
         }
 
         private void BtnMenos_Click(object sender, EventArgs e)
         {
             operadorAritmetico = "-";
-            primeiroNumero = double.Parse(BoxPainel.Text);
+            primeiroNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
             BoxPainel.Clear();
         }
 
         private void BtnDivicao_Click(object sender, EventArgs e)
         {
             operadorAritmetico = "/";
-            primeiroNumero = double.Parse(BoxPainel.Text);
+            primeiroNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
             BoxPainel.Clear();
         }
 
         private void BtnMultiplicacao_Click(object sender, EventArgs e)
         {
             operadorAritmetico = "*";
-            primeiroNumero = double.Parse(BoxPainel.Text);
+            primeiroNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
             BoxPainel.Clear();
         }
 
         private void BtnPorcentagem_Click(object sender, EventArgs e)
         {
             operadorAritmetico = "%";
-            primeiroNumero = double.Parse(BoxPainel.Text);
+            primeiroNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
             BoxPainel.Clear();
         }
 
         private void BtnIgual_Click(object sender, EventArgs e)
         {
-            segundoNumero = double.Parse(BoxPainel.Text);
+            segundoNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
 
             switch (operadorAritmetico)
             {
                 case "+":
                     AbstratoCalculadora somar = new Soma(primeiroNumero, segundoNumero);
-                    BoxPainel.Text = somar.Calcular(primeiroNumero, segundoNumero).ToString();
+                    BoxPainel.Text = somar.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
                     break;
                 case "-":
                     AbstratoCalculadora subtrair = new Subtrair(primeiroNumero, segundoNumero);
-                    BoxPainel.Text = subtrair.Calcular(primeiroNumero, segundoNumero).ToString();
+                    BoxPainel.Text = subtrair.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
                     break;
                 case "*":
                     AbstratoCalculadora multiplicar = new Multiplicar(primeiroNumero, segundoNumero);
-                    BoxPainel.Text = multiplicar.Calcular(primeiroNumero, segundoNumero).ToString();
+                    BoxPainel.Text = multiplicar.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
                     break;
                 case "/":
                     AbstratoCalculadora dividir = new Dividir(primeiroNumero, segundoNumero);
-                    BoxPainel.Text = dividir.Calcular(primeiroNumero, segundoNumero).ToString();
+                    BoxPainel.Text = dividir.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
                     break;
             }
         }
