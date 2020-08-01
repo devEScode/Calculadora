@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace Calculadora.Entidades
+﻿namespace Calculadora.Entidades
 {
     class Dividir : AbstratoCalculadora
     {
@@ -9,14 +7,7 @@ namespace Calculadora.Entidades
         }
         public override double Calcular(double primeiroNumero, double segundoNumero)
         {
-            if (primeiroNumero != 0)
-            {
-                return primeiroNumero / segundoNumero;
-            }
-            else
-            {
-                return 0000000000;
-            }
+            return primeiroNumero / segundoNumero;
         }
     }
 }

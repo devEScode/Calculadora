@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace Calculadora.Entidades
+﻿namespace Calculadora.Entidades
 {
     class Soma : AbstratoCalculadora
     {

@@ -16,7 +16,7 @@ namespace Calculadora
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void BtnUm_Click(object sender, EventArgs e)
@@ -109,33 +109,41 @@ namespace Calculadora
 
         private void BtnPorcentagem_Click(object sender, EventArgs e)
         {
-            operadorAritmetico = "%";
-            primeiroNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
-            BoxPainel.Clear();
+            segundoNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
+
+            AbstratoCalculadora porcentagem = new Porcentagem(primeiroNumero, segundoNumero, operadorAritmetico);
+            BoxPainel.Text = porcentagem.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
         }
 
         private void BtnIgual_Click(object sender, EventArgs e)
         {
             segundoNumero = double.Parse(BoxPainel.Text, CultureInfo.InvariantCulture);
 
-            switch (operadorAritmetico)
+            if (operadorAritmetico == "/" && segundoNumero == 0)
             {
-                case "+":
-                    AbstratoCalculadora somar = new Soma(primeiroNumero, segundoNumero);
-                    BoxPainel.Text = somar.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
-                    break;
-                case "-":
-                    AbstratoCalculadora subtrair = new Subtrair(primeiroNumero, segundoNumero);
-                    BoxPainel.Text = subtrair.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
-                    break;
-                case "*":
-                    AbstratoCalculadora multiplicar = new Multiplicar(primeiroNumero, segundoNumero);
-                    BoxPainel.Text = multiplicar.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
-                    break;
-                case "/":
-                    AbstratoCalculadora dividir = new Dividir(primeiroNumero, segundoNumero);
-                    BoxPainel.Text = dividir.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
-                    break;
+                BoxPainel.Text = "Não é possível dividir por zero.";
+            }
+            else
+            {
+                switch (operadorAritmetico)
+                {
+                    case "+":
+                        AbstratoCalculadora somar = new Soma(primeiroNumero, segundoNumero);
+                        BoxPainel.Text = somar.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
+                        break;
+                    case "-":
+                        AbstratoCalculadora subtrair = new Subtrair(primeiroNumero, segundoNumero);
+                        BoxPainel.Text = subtrair.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
+                        break;
+                    case "*":
+                        AbstratoCalculadora multiplicar = new Multiplicar(primeiroNumero, segundoNumero);
+                        BoxPainel.Text = multiplicar.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
+                        break;
+                    case "/":
+                        AbstratoCalculadora dividir = new Dividir(primeiroNumero, segundoNumero);
+                        BoxPainel.Text = dividir.Calcular(primeiroNumero, segundoNumero).ToString(CultureInfo.InvariantCulture);
+                        break;
+                }
             }
         }
 

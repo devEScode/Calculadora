@@ -55,6 +55,7 @@
     <Compile Include="Entidades\AbstratoCalculadora.cs" />
     <Compile Include="Entidades\Dividir.cs" />
     <Compile Include="Entidades\Multiplicar.cs" />
+    <Compile Include="Entidades\Porcentagem.cs" />
     <Compile Include="Entidades\Soma.cs" />
     <Compile Include="Entidades\Subtrair.cs" />
     <Compile Include="Program.cs" />
